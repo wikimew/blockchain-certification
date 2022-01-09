@@ -3,19 +3,19 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 // like the mnemomic and Infura project key below. Note: .env is ignored by git to keep your private information safe
 require('dotenv').config();
 const mnemonic = process.env["MNEMONIC"];
-const infuraProject = process.env["PROJECT_ENDPOINT"];
+const infuraProjectId = process.env["INFURA_PROJECT_ID"];
 
 module.exports = {
 
   /**
   * contracts_build_directory tells Truffle where to store compiled contracts
   */
-  contracts_build_directory: './polytest/build/polygon-contracts',
+  contracts_build_directory: './build/polygon-contracts',
 
   /**
   * contracts_directory tells Truffle where the contracts you want to compile are located
   */
-  contracts_directory: './polytest/contracts/polygon',
+  contracts_directory: './contracts/polygon',
 
 
   networks: {
@@ -31,7 +31,7 @@ module.exports = {
           phrase: mnemonic
         },
         providerOrUrl:
-         infuraProject
+         "https://polygon-mainnet.infura.io/v3/" + infuraProjectId
       }),
       network_id: 137,
       confirmations: 2,
@@ -46,7 +46,7 @@ module.exports = {
           phrase: mnemonic
         },
         providerOrUrl:
-         infuraProject
+         "https://polygon-mumbai.infura.io/v3/" + infuraProjectId
       }),
       network_id: 80001,
       confirmations: 2,
